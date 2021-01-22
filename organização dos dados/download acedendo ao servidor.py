@@ -43,7 +43,7 @@ def walk_dir(f, dirpath):
            
     f.cwd(original_dir)  # return to cwd of our caller
 
-f = ftplib.FTP('ftp.iberomoldes.pt')
-f.login('edi001' , 'edi#01')
+f = ftplib.FTP('ftp.###.pt')
+f.login('user' , 'pass')
 walk_dir(f, '/')
 f.quit()
