@@ -33,6 +33,49 @@ def raios_diametros(inf):
                 break
         return val
     except FileNotFoundError:
+    
+ ### criação do input ###
+ 
+ valores_teste=70
+ x_train=[]
+y_train=[]
+X_train=[]
+Y_train=[]
+dataset=[]
+    
+for i in range(len(treino1)-valores_teste):
+    x_train.append(treino1[i][0])
+    x_train.append(treino1[i][1])
+    x_train.append(treino1[i][2])
+    x_train.append(treino1[i][3])
+    x_train.append(treino1[i][4])
+    x_train.append(treino1[i][5])
+
+    X_train.append(x_train)
+    x_train=[]
+    y_train.append(round(treino1[i][6],4))
+    Y_train.append(y_train)
+    y_train=[]
+    
+x_test=[]
+y_test=[]
+X_test=[]
+Y_test=[]
+for i in range(len(treino1)-valores_teste,len(treino1)):
+    x_test.append(treino1[i][0])
+    x_test.append(treino1[i][1])
+    x_test.append(treino1[i][2])
+    x_test.append(treino1[i][3])
+    x_test.append(treino1[i][4])
+    x_test.append(treino1[i][5])
+    X_test.append(x_test)
+    x_test=[]
+    y_test.append(round(treino1[i][6],4))
+    Y_test.append(y_test)
+    y_test=[]
+    
+print(Y_train)
+
       pass
     
 ### método que cria as associações entre o ficheiro com os ficheiros zone e cria os dados de input ###
@@ -170,3 +213,17 @@ for i in treino:
     else:
         treino1.append(i)
 print(treino1)   
+
+
+### colocar na dimensão certa e dividir por treino/teste e caracteristica/target###
+Xtrain=np.array(X_train).astype('float32')
+print(Xtrain.shape)
+
+Ytrain=np.array(Y_train).reshape(Xtrain.shape[0],).astype('float32')
+print(Ytrain.shape)
+
+Xtest=np.array(X_test).astype('float32')
+print(Xtest.shape)
+
+Ytest=np.array(Y_test).reshape(Xtest.shape[0],).astype('float32')
+print(Ytest.shape)
